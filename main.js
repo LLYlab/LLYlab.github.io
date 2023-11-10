@@ -18,3 +18,7 @@ function VisitTF(){
 </html>
 ";
 }
+function VisitNovel(){
+  var body=document.getElementById("startbody");
+  body.innerHTML=""
+}
