@@ -10,14 +10,14 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background: url('background.png') center/cover no-repeat;
+            background: url('background.png') top/cover no-repeat;
         }
 
         #menu {
             position: fixed;
             top: 0;
-            left: 50px;
-            right: 50px;
+            left: 0;
+            right: 0;
             background: rgba(0, 0, 0, 0.9);
             padding: 20px;
             text-align: center;
@@ -25,7 +25,6 @@
             font-family: Arial, sans-serif;
             font-size: 24px;
             border-radius: 20px;
-            margin: 50px 0;
         }
 
         .menu-option {
@@ -95,5 +94,9 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        // Set default selection to "下载" on page load
+        showDownloads();
+    </script>
 </body>
 </html>
