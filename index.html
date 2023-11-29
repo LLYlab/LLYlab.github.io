@@ -1,21 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
-  <head>
-    <style>
-      body{
-        background-image:url("background.png");
-        background-repeat:no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-    </style>
+<head>
     <meta charset="UTF-8">
-    <title>LDC--LLYDownloadCnter</title>
-  </head>
-  <body id="startbody">
-    <script src="https://llylab.github.io/main.js"></script>
-    <input type="button" value="看谢铿顺" onclick="VisitTF()">
-    <input type="button" value="看小说" onclick="VisitNovel()">
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>LLYcollection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: url('background.png') center/cover no-repeat;
+        }
+
+        #menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-option {
+            display: inline-block;
+            margin: 0 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .menu-option:hover {
+            color: green;
+        }
+
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #content {
+            padding: 50px;
+        }
+
+        .selected {
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        #download-container {
+            text-align: center;
+        }
+
+        #download-btn {
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        #download-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #download-img {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <h1>LLYcollection</h1>
+        <div class="menu-option selected" onclick="showDownloads()">下载</div>
+        <div class="menu-option" onclick="showStories()">故事</div>
+        <div class="menu-option" onclick="showData()">资料</div>
+        <div class="menu-option" onclick="showTry()">尝试</div>
+    </div>
+    
+    <div id="content">
+        <!-- Content will be dynamically updated here based on the selected option -->
+    </div>
+
+    <script src="main.js"></script>
+</body>
 </html>
