@@ -9,6 +9,7 @@ function showDownloads() {
         </div>
     `;
     document.getElementById('menu').innerHTML = `
+        <h1>LLYcollection</h1>
         <div class="menu-option selected" onclick="showDownloads()">下载</div>
         <div class="menu-option" onclick="showStories()">故事</div>
         <div class="menu-option" onclick="showData()">资料</div>
@@ -34,6 +35,7 @@ function showStories() {
         `;
     });
     document.getElementById('menu').innerHTML = `
+        <h1>LLYcollection</h1>
         <div class="menu-option" onclick="showDownloads()">下载</div>
         <div class="menu-option selected" onclick="showStories()">故事</div>
         <div class="menu-option" onclick="showData()">资料</div>
@@ -45,6 +47,7 @@ function showData() {
     clearContent();
     // Add code to display data content
     document.getElementById('menu').innerHTML = `
+        <h1>LLYcollection</h1>
         <div class="menu-option" onclick="showDownloads()">下载</div>
         <div class="menu-option" onclick="showStories()">故事</div>
         <div class="menu-option selected" onclick="showData()">资料</div>
@@ -56,6 +59,7 @@ function showTry() {
     clearContent();
     // Add code to display try content
     document.getElementById('menu').innerHTML = `
+        <h1>LLYcollection</h1>
         <div class="menu-option" onclick="showDownloads()">下载</div>
         <div class="menu-option" onclick="showStories()">故事</div>
         <div class="menu-option" onclick="showData()">资料</div>
