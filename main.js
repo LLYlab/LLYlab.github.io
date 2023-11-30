@@ -8,6 +8,12 @@ function showDownloads() {
             <button id="download-btn" onclick="downloadLDC()">下载</button>
         </div>
     `;
+    document.getElementById('menu').innerHTML = '
+        <div class="menu-option selected" onclick="showDownloads()">下载</div>
+        <div class="menu-option" onclick="showStories()">故事</div>
+        <div class="menu-option" onclick="showData()">资料</div>
+        <div class="menu-option" onclick="showTry()">尝试</div>
+    ';
 }
 
 function showStories() {
@@ -27,16 +33,34 @@ function showStories() {
             </div>
         `;
     });
+    document.getElementById('menu').innerHTML = '
+        <div class="menu-option" onclick="showDownloads()">下载</div>
+        <div class="menu-option selected" onclick="showStories()">故事</div>
+        <div class="menu-option" onclick="showData()">资料</div>
+        <div class="menu-option" onclick="showTry()">尝试</div>
+    ';
 }
 
 function showData() {
     clearContent();
     // Add code to display data content
+    document.getElementById('menu').innerHTML = '
+        <div class="menu-option" onclick="showDownloads()">下载</div>
+        <div class="menu-option" onclick="showStories()">故事</div>
+        <div class="menu-option selected" onclick="showData()">资料</div>
+        <div class="menu-option" onclick="showTry()">尝试</div>
+    ';
 }
 
 function showTry() {
     clearContent();
     // Add code to display try content
+    document.getElementById('menu').innerHTML = '
+        <div class="menu-option" onclick="showDownloads()">下载</div>
+        <div class="menu-option" onclick="showStories()">故事</div>
+        <div class="menu-option" onclick="showData()">资料</div>
+        <div class="menu-option selected" onclick="showTry()">尝试</div>
+    ';
 }
 
 function clearContent() {
