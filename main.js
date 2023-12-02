@@ -16,6 +16,7 @@ function showDownloads() {
         <div class="menu-option" onclick="showTry()">尝试</div>
     `;
 }
+// Function to fetch story positions from the server
 async function fetchStoryPositions() {
     try {
         const response = await fetch('https://llylab.github.io/paths/story.txt');
@@ -42,7 +43,7 @@ async function showStories() {
     const storyContainers = [];
 
     storyPositions.forEach(async (storyPosition) => {
-        // Assuming each line in "all.txt" has a format like "story_abs"
+        // Assuming each line in "story.txt" has a format like "story_abs"
         const fileName = storyPosition.trim();
         const content = await fetchStoryContent(fileName);
 
@@ -89,14 +90,6 @@ async function showStories() {
             }
         }
     });
-    
-    document.getElementById('menu').innerHTML = `
-        <h1>LLYcollection</h1>
-        <div class="menu-option" onclick="showDownloads()">下载</div>
-        <div class="menu-option selected" onclick="showStories()">故事</div>
-        <div class="menu-option" onclick="showData()">资料</div>
-        <div class="menu-option" onclick="showTry()">尝试</div>
-    `;
 }
 
 function showData() {
