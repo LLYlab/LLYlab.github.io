@@ -31,7 +31,17 @@ async function fetchStoryPositions() {
         return [];
     }
 }
-
+// Function to fetch story content from the server
+async function fetchStoryContent(fileName) {
+    try {
+        const response = await fetch(`https://llylab.github.io/story/${fileName}.txt`);
+        const content = await response.text();
+        return content;
+    } catch (error) {
+        console.error(`Error fetching story content for ${fileName}:`, error);
+        return 'Failed to fetch story content';
+    }
+}
 // Function to show stories with dynamic loading based on scroll position
 async function showStories() {
     clearContent();
@@ -130,11 +140,3 @@ function clearContent() {
 function downloadLDC() {
     // Add code to trigger LDC.exe download
 }
-
-function fetchStoryContent(fileName) {
-    // Add code to fetch content of the specified story file
-    // You may need to use AJAX, fetch, or other methods to read the file content
-    // This is a placeholder function, and the implementation depends on your specific requirements.
-    return "Story content goes here.";
-}
-
