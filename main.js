@@ -75,7 +75,25 @@ async function showStories() {
     // Handle scroll event to dynamically load content based on scroll position
     let currentStoryIndex = 0;
     document.addEventListener('scroll', () => {
-        // ... (rest of the scroll event handling remains the same)
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Find the current story index based on scroll position
+        while (
+            currentStoryIndex < storyContainers.length - 1 &&
+            storyContainers[currentStoryIndex + 1].offsetTop < scrollPosition + windowHeight
+        ) {
+            currentStoryIndex++;
+        }
+
+        // Load content dynamically based on scroll position
+        for (let i = 0; i < storyContainers.length; i++) {
+            if (i === currentStoryIndex) {
+                storyContainers[i].style.opacity = 1; // Show the current story
+            } else {
+                storyContainers[i].style.opacity = 0; // Hide other stories
+            }
+        }
     });
 
     document.getElementById('menu').innerHTML = `
