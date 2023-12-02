@@ -90,6 +90,13 @@ async function showStories() {
             }
         }
     });
+    document.getElementById('menu').innerHTML = `
+        <h1>LLYcollection</h1>
+        <div class="menu-option" onclick="showDownloads()">下载</div>
+        <div class="menu-option selected" onclick="showStories()">故事</div>
+        <div class="menu-option" onclick="showData()">资料</div>
+        <div class="menu-option" onclick="showTry()">尝试</div>
+    `;
 }
 
 function showData() {
