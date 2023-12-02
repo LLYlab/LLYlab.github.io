@@ -18,7 +18,7 @@ function showDownloads() {
 }
 async function fetchStoryPositions() {
     try {
-        const response = await fetch('https://llylab.github.io/story/all.txt');
+        const response = await fetch('https://llylab.github.io/paths/story.txt');
         const data = await response.text();
 
         // Assuming the data is in a specific format, modify accordingly
