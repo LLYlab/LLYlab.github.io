@@ -70,11 +70,6 @@ async function showStories() {
 
         // Store the position of the story container
         storyContainers.push(storyContainer);
-
-        // Update menu to reflect current selection
-        if (storyContainers.length === 1) {
-            updateMenuSelection('故事');
-        }
     });
 
     // Handle scroll event to dynamically load content based on scroll position
