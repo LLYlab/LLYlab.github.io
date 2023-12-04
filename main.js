@@ -58,6 +58,7 @@ async function showStories() {
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
         const fileName = storyPosition.trim();
+        if(fileName=="")break;
         const content = await fetchStoryContent(fileName);
 
         // Create story container
