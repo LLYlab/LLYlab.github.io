@@ -4,7 +4,7 @@ function showDownloads() {
     document.getElementById('content').innerHTML = `
         <div id="download-container">
             <img src="LDCico.png" alt="LDC Icon" id="download-img">
-            <h2>下载 LDC (LLY download center)</h2>
+            <h2>立刻下载 LDC (LLY download center)</h2>
             <button id="download-btn" onclick="downloadLDC()">下载</button>
         </div>
     `;
