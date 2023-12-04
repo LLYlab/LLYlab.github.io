@@ -77,11 +77,12 @@
         #download-btn {
             background: green;
             color: white;
-            padding: 40px 80px;
+            padding: 10px 60px;
             border: none;
             border-radius: 20px;
             cursor: pointer;
             transition: transform 0.3s;
+            font-size:60px
         }
 
         #download-btn:hover {
@@ -93,6 +94,28 @@
             height: 150px;
             margin-top: 20px;
         }
+        /* styles.css */
+
+        .story-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .content-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px; /* 调整悬浮窗宽度 */
+        }
+
+        .floating-window {
+            position: fixed;
+            display: none;
+            max-width: 300px; /* 调整悬浮窗宽度 */
+        }
+
     </style>
 </head>
 <body>
