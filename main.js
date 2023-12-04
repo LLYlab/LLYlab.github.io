@@ -51,6 +51,9 @@ async function showStories() {
 
     // Create an array to store the positions of each story container
     const storyContainers = [];
+    const floatingWindow = document.createElement('div');
+    floatingWindow.className = 'floating-window';
+    document.body.appendChild(floatingWindow);
 
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
@@ -61,8 +64,10 @@ async function showStories() {
         const storyContainer = document.createElement('div');
         storyContainer.className = 'story-container';
         storyContainer.innerHTML = `
-            <h2>${fileName}</h2>
-            <p>${content}</p>
+            <div class="content-container">
+                <h2>${fileName}</h2>
+                <p>${content}</p>
+            </div>
         `;
 
         // Append story container to content
@@ -70,31 +75,21 @@ async function showStories() {
 
         // Store the position of the story container
         storyContainers.push(storyContainer);
+
+        // Add event listener to show floating window on mouseover
+        storyContainer.addEventListener('mouseover', () => {
+            const rect = storyContainer.getBoundingClientRect();
+            floatingWindow.innerHTML = `<div class="content-container">${content}</div>`;
+            floatingWindow.style.left = `${rect.left}px`;
+            floatingWindow.style.top = `${rect.top + rect.height}px`;
+            floatingWindow.style.display = 'block';
+        });
+
+        // Add event listener to hide floating window on mouseout
+        storyContainer.addEventListener('mouseout', () => {
+            floatingWindow.style.display = 'none';
+        });
     }
-
-    // Handle scroll event to dynamically load content based on scroll position
-    let currentStoryIndex = 0;
-    document.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        // Find the current story index based on scroll position
-        while (
-            currentStoryIndex < storyContainers.length - 1 &&
-            storyContainers[currentStoryIndex + 1].offsetTop < scrollPosition + windowHeight
-        ) {
-            currentStoryIndex++;
-        }
-
-        // Load content dynamically based on scroll position
-        for (let i = 0; i < storyContainers.length; i++) {
-            if (i === currentStoryIndex) {
-                storyContainers[i].style.opacity = 1; // Show the current story
-            } else {
-                storyContainers[i].style.opacity = 0; // Hide other stories
-            }
-        }
-    });
 
     document.getElementById('menu').innerHTML = `
         <h1>LLYcollection</h1>
