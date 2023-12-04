@@ -81,11 +81,14 @@ async function showStories() {
         storyContainer.addEventListener('mouseover', () => {
             const rect = storyContainer.getBoundingClientRect();
             floatingWindow.innerHTML = `<div class="content-container">${content}</div>`;
-            floatingWindow.style.left = `${rect.left}px`;
-            floatingWindow.style.top = `${rect.top + rect.height}px`;
+            // Calculate the position to center the floating window
+            const centerX = (window.innerWidth - floatingWindow.offsetWidth) / 2;
+            const centerY = (window.innerHeight - floatingWindow.offsetHeight) / 2;
+            floatingWindow.style.left = `${centerX}px`;
+            floatingWindow.style.top = `${centerY}px`;
             floatingWindow.style.display = 'block';
         });
-
+        
         // Add event listener to hide floating window on mouseout
         storyContainer.addEventListener('mouseout', () => {
             floatingWindow.style.display = 'none';
