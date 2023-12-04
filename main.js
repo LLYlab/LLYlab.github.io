@@ -51,9 +51,6 @@ async function showStories() {
 
     // Create an array to store the positions of each story container
     const storyContainers = [];
-    const floatingWindow = document.createElement('div');
-    floatingWindow.className = 'floating-window';
-    document.body.appendChild(floatingWindow);
 
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
@@ -77,31 +74,13 @@ async function showStories() {
         // Store the position of the story container
         storyContainers.push(storyContainer);
 
-        // Add event listener to show floating window on mouseover
-        storyContainer.addEventListener('mouseover', () => {
-            const rect = storyContainer.getBoundingClientRect();
-            floatingWindow.innerHTML = `<div class="content-container">${content}</div>`;
-            // Calculate the position to center the floating window
-            const centerX = (window.innerWidth - floatingWindow.offsetWidth) / 2;
-            const centerY = (window.innerHeight - floatingWindow.offsetHeight) / 2;
-            floatingWindow.style.left = `${centerX}px`;
-            floatingWindow.style.top = `${centerY}px`;
-            floatingWindow.style.display = 'block';
-        });
-        
-        // Add event listener to hide floating window on mouseout
-        storyContainer.addEventListener('mouseout', () => {
-            floatingWindow.style.display = 'none';
-        });
-    }
-
-    document.getElementById('menu').innerHTML = `
-        <h1>LLYcollection</h1>
-        <div class="menu-option" onclick="showDownloads()">下载</div>
-        <div class="menu-option selected" onclick="showStories()">故事</div>
-        <div class="menu-option" onclick="showData()">资料</div>
-        <div class="menu-option" onclick="showTry()">尝试</div>
-    `;
+        document.getElementById('menu').innerHTML = `
+            <h1>LLYcollection</h1>
+            <div class="menu-option" onclick="showDownloads()">下载</div>
+            <div class="menu-option selected" onclick="showStories()">故事</div>
+            <div class="menu-option" onclick="showData()">资料</div>
+            <div class="menu-option" onclick="showTry()">尝试</div>
+        `;
 }
 
 
