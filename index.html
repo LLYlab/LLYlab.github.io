@@ -47,7 +47,16 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
-
+        h1::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* 使线与文本中轴对称 */
+            left: 650px; /* 调整线的位置 */
+            width: 3px;
+            height: 80%; /* 调整线的高度 */
+            background-color: rgba(255, 255, 255, 1); /* 设置淡淡的白线颜色 */
+        }
 
         .selected {
             background: white;
@@ -112,10 +121,6 @@
             margin-top:50px;
         }
         .content-container h2 {
-            color:white;
-            font-size:25px;
-        }
-        .content-container h2::after {
             color:white;
             font-size:25px;
         }
