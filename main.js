@@ -127,7 +127,7 @@ async function showStories() {
         }
         
         if(NowStoryNum!=-1)NowStoryNum=NowStoryNum+1;
-        if(NowStoryNum>StroyNum)NowStoryNum=-1;
+        if(NowStoryNum>StroyNum)NowStoryNum= -1;
     }
 }
 
