@@ -51,28 +51,75 @@ async function showStories() {
 
     // Create an array to store the positions of each story container
     const storyContainers = [];
+    let StoryNum=0;
+    let NowStoryNum=-1;
 
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
         const fileName = storyPosition.trim();
         if(fileName=="")break;
+        if(fileName.substring(0,7)=="cmd:div"){
+            StoryNum=Number(fileName.substring(7));
+            NowStoryNum=0;
+            continue;
+        }
         const content = await fetchStoryContent(fileName);
 
-        // Create story container
-        const storyContainer = document.createElement('div');
-        storyContainer.className = 'story-container';
-        storyContainer.innerHTML = `
-            <div class="content-container">
-                <h2>${fileName}</h2>
-                <p>${content}</p>
-            </div>
-        `;
+        if(NowStoryNum==-1){
+            // Create story container
+            const storyContainer = document.createElement('div');
+            storyContainer.className = 'story-container';
+            storyContainer.innerHTML = `
+                <div class="content-container">
+                    <h2>${fileName}</h2>
+                    <p>${content}</p>
+                </div>
+            `;
 
-        // Append story container to content
-        document.getElementById('content').appendChild(storyContainer);
+            // Append story container to content
+            document.getElementById('content').appendChild(storyContainer);
 
-        // Store the position of the story container
-        storyContainers.push(storyContainer);
+            // Store the position of the story container
+            storyContainers.push(storyContainer);
+        }
+        else if(NowStoryNum==0){
+            /*HELPME!!!改它！！！*/
+            // Create story container
+            const storyContainer = document.createElement('div');
+            storyContainer.className = 'story-container';
+            storyContainer.innerHTML = `
+                <div class="content-container">
+                    <h2>${fileName}</h2>
+                    <p>${content}</p>
+                </div>
+            `;
+
+            // Append story container to content
+            document.getElementById('content').appendChild(storyContainer);
+
+            // Store the position of the story container
+            storyContainers.push(storyContainer);
+        }
+        else{
+            // Create story container
+            const storyContainer = document.createElement('div');
+            storyContainer.className = 'story-container';
+            storyContainer.innerHTML = `
+                <div class="content-container-starter">
+                    <h2>${fileName}</h2>
+                    <p>${content}</p>
+                </div>
+            `;
+
+            // Append story container to content
+            document.getElementById('content').appendChild(storyContainer);
+
+            // Store the position of the story container
+            storyContainers.push(storyContainer);
+        }
+        
+        if(NowStoryNum!=-1)NowStoryNum=NowStoryNum+1;
+        if(NowStoryNum>StroyNum)NowStoryNum=-1;
     }
 
     document.getElementById('menu').innerHTML = `
