@@ -57,8 +57,6 @@ async function showStories() {
     // Fetch story positions from the server
     const storyPositions = await fetchStoryPositions();
 
-    // Create an array to store the positions of each story container
-    const storyContainers = [];
     var StoryNum=0;
     var NowStoryNum=-1;
 
@@ -86,9 +84,6 @@ async function showStories() {
 
             // Append story container to content
             document.getElementById('content').appendChild(storyContainer);
-
-            // Store the position of the story container
-            storyContainers.push(storyContainer);
         }
         else if(NowStoryNum==0){
             /*HELPME!!!改它！！！*/
@@ -96,7 +91,7 @@ async function showStories() {
             const storyContainer = document.createElement('div');
             storyContainer.className = 'story-container';
             storyContainer.innerHTML = `
-                <div class="content-container">
+                <div class="content-container-div-start">
                     <h2>${fileName}</h2>
                     <p>${content}</p>
                 </div>
@@ -104,26 +99,22 @@ async function showStories() {
 
             // Append story container to content
             document.getElementById('content').appendChild(storyContainer);
-
-            // Store the position of the story container
-            storyContainers.push(storyContainer);
         }
         else{
-            // Create story container
-            const storyContainer = document.createElement('div');
-            storyContainer.className = 'story-container';
-            storyContainer.innerHTML = `
-                <div class="content-container-starter">
+            // 获取所有拥有 class 名称为 "example" 的 div 元素
+            let storydivs = document.querySelectorAll('.example');
+
+            // 获取最后一个 div 元素
+            let lastStoryDiv = storydivs[storydivs.length - 1];
+
+            // 创建一个新的元素并添加到最后一个 div 中
+            const storySmallContainer = document.createElement('div');
+            storySmallContainer.className = 'story-container-indivs';
+            storySmallContainer.innerHTML = `
                     <h2>${fileName}</h2>
                     <p>${content}</p>
-                </div>
             `;
-
-            // Append story container to content
-            document.getElementById('content').appendChild(storyContainer);
-
-            // Store the position of the story container
-            storyContainers.push(storyContainer);
+            lastStoryDiv.appendChild(storySmallContainer);
         }
         
         if(NowStoryNum!=-1){
