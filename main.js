@@ -127,10 +127,10 @@ async function showStories() {
         }
         
         if(NowStoryNum!=-1){
-            NowStoryNum=NowStoryNum+1;
+            NowStoryNum=NowStoryNum + 1;
         }
         if(NowStoryNum>StroyNum){
-            var NowStoryNum!=-1
+            var NowStoryNum = -1
         }
     }
 }
