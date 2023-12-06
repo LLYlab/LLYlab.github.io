@@ -59,8 +59,8 @@ async function showStories() {
 
     // Create an array to store the positions of each story container
     const storyContainers = [];
-    let StoryNum=0;
-    let NowStoryNum=-1;
+    var StoryNum=0;
+    var NowStoryNum=-1;
 
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
@@ -126,8 +126,12 @@ async function showStories() {
             storyContainers.push(storyContainer);
         }
         
-        if(NowStoryNum!=-1)NowStoryNum=NowStoryNum+1;
-        if(NowStoryNum>StroyNum)let NowStoryNum= -1;
+        if(NowStoryNum!=-1){
+            NowStoryNum=NowStoryNum+1;
+        }
+        if(NowStoryNum>StroyNum){
+            var NowStoryNum!=-1
+        }
     }
 }
 
