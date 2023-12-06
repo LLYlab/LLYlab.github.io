@@ -102,7 +102,7 @@ async function showStories() {
         }
         else{
             // 获取所有拥有 class 名称为 "example" 的 div 元素
-            let storydivs = document.querySelectorAll('.example');
+            let storydivs = document.querySelectorAll('.content-container-div-start');
 
             // 获取最后一个 div 元素
             let lastStoryDiv = storydivs[storydivs.length - 1];
