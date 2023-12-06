@@ -109,7 +109,7 @@ async function showStories() {
 
             // 创建一个新的元素并添加到最后一个 div 中
             const storySmallContainer = document.createElement('div');
-            storySmallContainer.className = 'story-container-indivs';
+            storySmallContainer.className = 'content-container-indivs';
             storySmallContainer.innerHTML = `
                     <h2>${fileName}</h2>
                     <p>${content}</p>
