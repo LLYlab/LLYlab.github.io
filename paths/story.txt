@@ -1,5 +1,6 @@
+gpt_output
+cmd:div3
 xks_1
 xks_2
 xks_3
-gpt_output
 gpt_input
