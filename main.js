@@ -139,36 +139,103 @@ function showData() {
     `;
 }
 
-var OpenedTry=0;
+var OpenedTry = 0;
 var intervalId = 0;
-function flushTry(){
-    if(OpenedTry==0){
-        
-    }
-    else{
-        
+
+function flushTry() {
+    // Unload previous try content
+    unloadTryContent();
+
+    if (OpenedTry !== 0) {
+        // Load new try content
+        loadTryContent();
+        // Start gameMain function at intervals
+        intervalId = setInterval(gameMain, 20); // Adjust the interval as needed
     }
 }
-function showTry() {
-    clearContent();
-    
-    // 获取要监听滚轮事件的元素，这里监听整个文档
-    var elementToScroll = document;
-    // 添加滚轮事件监听器
-    elementToScroll.addEventListener("wheel", function(event) {
-    // event.deltaY 表示滚轮滚动的距离，负值表示向上滚动，正值表示向下滚动
-        if(event.deltaY>0){
-            OpenedTry=OpenedTry+1;
-        }
-        else{
-            OpenedTry=OpenedTry-1;
-            if(OpenedTry<0){
-                OpenedTry=0;
-            }
+
+function loadTryContent() {
+    // Load JS and CSS based on the content of paths/try.txt
+    fetch(`paths/try.txt`)
+        .then(response => response.text())
+        .then(data => {
+            const tryContent = data.split('\n')[OpenedTry - 1].trim();
+            loadJS(`try/${tryContent}.js`);
+            loadCSS(`try/${tryContent}.css`);
+        });
+
+    // Create try-zone and game-zone elements
+    const tryZone = document.createElement('div');
+    tryZone.id = 'try-zone';
+    const gameZone = document.createElement('div');
+    gameZone.id = 'game-zone';
+
+    // Add try-zone and game-zone to the document
+    document.body.appendChild(tryZone);
+    tryZone.appendChild(gameZone);
+
+    // Add click event listeners to the gradient areas
+    document.getElementById('gradient-top').addEventListener('click', () => {
+        OpenedTry++;
+        flushTry();
+    });
+
+    document.getElementById('gradient-bottom').addEventListener('click', () => {
+        OpenedTry--;
+        if (OpenedTry < 0) {
+            OpenedTry = 0;
         }
         flushTry();
     });
-    
+}
+
+function unloadTryContent() {
+    // Unload JS and CSS
+    unloadJS();
+    unloadCSS();
+
+    // Clear the interval
+    clearInterval(intervalId);
+
+    // Remove try-zone and game-zone elements
+    const tryZone = document.getElementById('try-zone');
+    if (tryZone) {
+        tryZone.parentNode.removeChild(tryZone);
+    }
+}
+
+function loadJS(url) {
+    // Load JS dynamically
+    const script = document.createElement('script');
+    script.src = url;
+    document.head.appendChild(script);
+}
+
+function loadCSS(url) {
+    // Load CSS dynamically
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
+}
+
+function unloadJS() {
+    // Unload previous JS
+    const scripts = document.querySelectorAll('script');
+    scripts.forEach(script => script.parentNode.removeChild(script));
+}
+
+function unloadCSS() {
+    // Unload previous CSS
+    const links = document.querySelectorAll('link[rel="stylesheet"]');
+    links.forEach(link => link.parentNode.removeChild(link));
+}
+
+function showTry() {
+    clearContent();
+    OpenedTry = 0;
+    flushTry();
+
     // Add code to display try content
     document.getElementById('menu').innerHTML = `
         <h1>LLYcollection</h1>
@@ -178,6 +245,7 @@ function showTry() {
         <div class="menu-option selected" onclick="showTry()">尝试</div>
     `;
 }
+
 
 function clearContent() {
     document.getElementById('content').innerHTML = '';
