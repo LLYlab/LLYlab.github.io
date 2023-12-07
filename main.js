@@ -139,8 +139,36 @@ function showData() {
     `;
 }
 
+var OpenedTry=0;
+var intervalId = 0;
+function flushTry(){
+    if(OpenedTry==0){
+        
+    }
+    else{
+        
+    }
+}
 function showTry() {
     clearContent();
+    
+    // 获取要监听滚轮事件的元素，这里监听整个文档
+    var elementToScroll = document;
+    // 添加滚轮事件监听器
+    elementToScroll.addEventListener("wheel", function(event) {
+    // event.deltaY 表示滚轮滚动的距离，负值表示向上滚动，正值表示向下滚动
+        if(event.deltaY>0){
+            OpenedTry=OpenedTry+1;
+        }
+        else{
+            OpenedTry=OpenedTry-1;
+            if(OpenedTry<0){
+                OpenedTry=0;
+            }
+        }
+        flushTry();
+    });
+    
     // Add code to display try content
     document.getElementById('menu').innerHTML = `
         <h1>LLYcollection</h1>
