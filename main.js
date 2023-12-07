@@ -152,6 +152,41 @@ function flushTry() {
         // Start gameMain function at intervals
         intervalId = setInterval(gameMain, 20); // Adjust the interval as needed
     }
+    else {
+        // Show try options
+        showTryOptions();
+    }
+}
+// 新增 showTryOptions 函数
+function showTryOptions() {
+    clearContent();
+
+    // Fetch try options from paths/try.txt
+    fetch(`paths/try.txt`)
+        .then(response => response.text())
+        .then(data => {
+            const tryOptions = data.split('\n').map(option => option.trim()).filter(Boolean);
+
+            // Create a container for try options
+            const tryOptionsContainer = document.createElement('div');
+            tryOptionsContainer.id = 'try-options-container';
+
+            // Populate try options
+            tryOptions.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'try-option-button';
+                optionButton.textContent = option;
+                optionButton.addEventListener('click', () => {
+                    OpenedTry = index + 1;
+                    flushTry();
+                });
+
+                tryOptionsContainer.appendChild(optionButton);
+            });
+
+            // Append try options container to content
+            document.getElementById('content').appendChild(tryOptionsContainer);
+        });
 }
 
 function loadTryContent() {
