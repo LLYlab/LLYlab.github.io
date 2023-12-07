@@ -210,12 +210,12 @@ function loadTryContent() {
     tryZone.appendChild(gameZone);
 
     // Add click event listeners to the gradient areas
-    document.getElementById('gradient-top').addEventListener('click', () => {
+    document.getElementById('gradient-top').addEventListener('click', function(){
         OpenedTry++;
         flushTry();
     });
 
-    document.getElementById('gradient-bottom').addEventListener('click', () => {
+    document.getElementById('gradient-bottom').addEventListener('click', function(){
         OpenedTry--;
         if (OpenedTry < 0) {
             OpenedTry = 0;
