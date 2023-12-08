@@ -150,7 +150,7 @@ function flushTry() {
         // Load new try content
         loadTryContent();
         // Start gameMain function at intervals
-        intervalId = setInterval(gameMain, 20); // Adjust the interval as needed
+        intervalId = setInterval(gameMain(), 20); // Adjust the interval as needed
     }
     else {
         // Show try options
