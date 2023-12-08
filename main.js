@@ -279,7 +279,7 @@ function showTry() {
         <div class="menu-option selected" onclick="showTry()">尝试</div>
     `;
     // Ensure gradient-top and gradient-bottom are present
-    document.body.innerHTML += `
+    document.getElementById('content').innerHTML += `
         <div id="gradient-top"></div>
         <div id="gradient-bottom"></div>
     `;
