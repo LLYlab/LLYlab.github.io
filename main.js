@@ -147,6 +147,12 @@ function flushTry() {
     unloadTryContent();
 
     if (OpenedTry !== 0) {
+        clearContent();
+        // Ensure gradient-top and gradient-bottom are present
+        document.getElementById('content').innerHTML += `
+            <div id="gradient-top"></div>
+            <div id="gradient-bottom"></div>
+        `;
         // Load new try content
         loadTryContent();
         // Start gameMain function at intervals
@@ -188,14 +194,6 @@ function showTryOptions() {
             document.getElementById('content').appendChild(tryOptionsContainer);
         });
 
-    // Add code to display try content
-    document.getElementById('menu').innerHTML = `
-        <h1>LLYcollection</h1>
-        <div class="menu-option" onclick="showDownloads()">下载</div>
-        <div class="menu-option" onclick="showStories()">故事</div>
-        <div class="menu-option" onclick="showData()">资料</div>
-        <div class="menu-option selected" onclick="showTry()">尝试</div>
-    `;
     // Ensure gradient-top and gradient-bottom are present
     document.getElementById('content').innerHTML += `
         <div id="gradient-top"></div>
