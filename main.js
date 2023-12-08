@@ -220,7 +220,7 @@ function loadTryContent() {
     gameZone.id = 'game-zone';
 
     // Add try-zone and game-zone to the document
-    document.body.appendChild(tryZone);
+    document.getElementById('content').appendChild(tryZone);
     tryZone.appendChild(gameZone);
 
     // Add click event listeners to the gradient areas
