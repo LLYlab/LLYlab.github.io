@@ -269,7 +269,6 @@ function unloadCSS() {
 function showTry() {
     clearContent();
     OpenedTry = 0;
-    flushTry();
 
     // Add code to display try content
     document.getElementById('menu').innerHTML = `
@@ -279,6 +278,13 @@ function showTry() {
         <div class="menu-option" onclick="showData()">资料</div>
         <div class="menu-option selected" onclick="showTry()">尝试</div>
     `;
+    // Ensure gradient-top and gradient-bottom are present
+    document.body.innerHTML += `
+        <div id="gradient-top"></div>
+        <div id="gradient-bottom"></div>
+    `;
+    
+    flushTry();
 }
 
 
