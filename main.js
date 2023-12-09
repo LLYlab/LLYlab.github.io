@@ -150,8 +150,8 @@ function flushTry() {
         clearContent();
         // Ensure gradient-top and gradient-bottom are present
         document.getElementById('content').innerHTML += `
-            <div id="gradient-top"></div>
-            <div id="gradient-bottom"></div>
+            <div id="gradient-top" onclick="increaseOpenedTry()"></div>
+            <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
         `;
         // Load new try content
         loadTryContent();
@@ -196,8 +196,8 @@ function showTryOptions() {
 
     // Ensure gradient-top and gradient-bottom are present
     document.getElementById('content').innerHTML += `
-        <div id="gradient-top"></div>
-        <div id="gradient-bottom"></div>
+        <div id="gradient-top" onclick="increaseOpenedTry()"></div>
+        <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
     `;
 }
 
@@ -220,20 +220,6 @@ function loadTryContent() {
     // Add try-zone and game-zone to the document
     document.getElementById('content').appendChild(tryZone);
     tryZone.appendChild(gameZone);
-
-    // Add click event listeners to the gradient areas
-    document.getElementById('gradient-top').addEventListener('click', function(){
-        OpenedTry++;
-        flushTry();
-    });
-
-    document.getElementById('gradient-bottom').addEventListener('click', function(){
-        OpenedTry--;
-        if (OpenedTry < 0) {
-            OpenedTry = 0;
-        }
-        flushTry();
-    });
 }
 
 function unloadTryContent() {
@@ -293,13 +279,23 @@ function showTry() {
     `;
     // Ensure gradient-top and gradient-bottom are present
     document.getElementById('content').innerHTML += `
-        <div id="gradient-top"></div>
-        <div id="gradient-bottom"></div>
+        <div id="gradient-top" onclick="increaseOpenedTry()"></div>
+        <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
     `;
     
     flushTry();
 }
+// 点击上方区域，OpenedTry + 1
+function increaseOpenedTry() {
+    OpenedTry = OpenedTry + 1;
+    flushTry();
+}
 
+// 点击下方区域，OpenedTry - 1，但不能小于0
+function decreaseOpenedTry() {
+    OpenedTry = Math.max(0, OpenedTry - 1);
+    flushTry();
+}
 
 function clearContent() {
     document.getElementById('content').innerHTML = '';
