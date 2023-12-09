@@ -294,7 +294,28 @@ function increaseOpenedTry() {
 // 点击下方区域，OpenedTry - 1，但不能小于0
 function decreaseOpenedTry() {
     OpenedTry = Math.max(0, OpenedTry - 1);
+    if (OpenedTry > pathsTryLength) {
+        OpenedTry = 1;
+    }
     flushTry();
+}
+let pathsTryLength = 0; // 在全局范围内定义
+// Function to fetch try paths from the server
+async function fetchPathsTry() {
+    try {
+        const response = await fetch('https://llylab.github.io/paths/try.txt');
+        const data = await response.text();
+
+        // Assuming each line in "try.txt" is a valid path
+        const pathsTry = data.split('\n').map((line) => line.trim());
+
+        pathsTryLength = pathsTry.length; // 保存长度
+
+        return pathsTry;
+    } catch (error) {
+        console.error('Error fetching try paths:', error);
+        return [];
+    }
 }
 
 function clearContent() {
