@@ -150,8 +150,8 @@ function flushTry() {
         clearContent();
         // Ensure gradient-top and gradient-bottom are present
         document.getElementById('content').innerHTML += `
-            <div id="gradient-top" onclick="increaseOpenedTry()"></div>
-            <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
+            <div id="gradient-top" onclick="decreaseOpenedTry()"></div>
+            <div id="gradient-bottom" onclick="increaseOpenedTry()"></div>
         `;
         // Load new try content
         loadTryContent();
@@ -196,8 +196,8 @@ function showTryOptions() {
 
     // Ensure gradient-top and gradient-bottom are present
     document.getElementById('content').innerHTML += `
-        <div id="gradient-top" onclick="increaseOpenedTry()"></div>
-        <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
+        <div id="gradient-top" onclick="decreaseOpenedTry()"></div>
+        <div id="gradient-bottom" onclick="increaseOpenedTry()"></div>
     `;
 }
 
@@ -279,8 +279,8 @@ function showTry() {
     `;
     // Ensure gradient-top and gradient-bottom are present
     document.getElementById('content').innerHTML += `
-        <div id="gradient-top" onclick="increaseOpenedTry()"></div>
-        <div id="gradient-bottom" onclick="decreaseOpenedTry()"></div>
+        <div id="gradient-top" onclick="decreaseOpenedTry()"></div>
+        <div id="gradient-bottom" onclick="increaseOpenedTry()"></div>
     `;
     
     flushTry();
