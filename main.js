@@ -270,6 +270,7 @@ function unloadJS() {
     // Unload previous JS
     const scripts = document.querySelectorAll('script');
     scripts.forEach(script => script.parentNode.removeChild(script));
+    loadJS("https://llylab.github.io/main.js");
 }
 
 function unloadCSS() {
