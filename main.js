@@ -299,7 +299,7 @@ function decreaseOpenedTry() {
     }
     flushTry();
 }
-let pathsTryLength = 0; // 在全局范围内定义
+var pathsTryLength = 0; // 在全局范围内定义
 // Function to fetch try paths from the server
 async function fetchPathsTry() {
     try {
