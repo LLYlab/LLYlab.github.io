@@ -57,7 +57,19 @@ async function fetchStoryMenu() {
         return [];
     }
 }
+function findStoryContainerByTitle(title) {
+    const storyContainers = document.querySelectorAll('.story-container');
+    
+    for (const storyContainer of storyContainers) {
+        const h2 = storyContainer.querySelector('h2');
+        
+        if (h2 && h2.innerText === title) {
+            return storyContainer;
+        }
+    }
 
+    return null;
+}
 // Function to show stories with dynamic loading based on scroll position
 async function showStories() {
     clearContent();
@@ -156,7 +168,7 @@ async function showStories() {
         // Add a click event to scroll to the corresponding story position
         sidebarItem.addEventListener('click', () => {
             // Find the story container with a matching title
-            const targetStoryContainer = document.querySelector(`.story-container h2:contains('${title}')`);
+            const targetStoryContainer = findStoryContainerByTitle(title);
             if (targetStory) {
                 window.scrollTo({
                     top: targetStory.offsetTop,
