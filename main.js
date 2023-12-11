@@ -79,7 +79,7 @@ async function showStories() {
     for (const storyPosition of storyPositions) {
         // Assuming each line in "story.txt" has a format like "story_abs"
         const fileName = storyPosition.trim();
-        if(fileName=="")break;
+        if(fileName=="")continue;
         if(fileName.substring(0,7)=="cmd:div"){
             StoryNum=Number(fileName.substring(7));
             NowStoryNum=0;
