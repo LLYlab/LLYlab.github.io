@@ -77,7 +77,7 @@ function findTitleInContainer(container, targetTitle) {
         return h2.innerText;
     }
 
-    const nestedContainers = container.querySelectorAll('.story-container');
+    const nestedContainers = container.querySelectorAll('.content-container-indivs');
     for (const nestedContainer of nestedContainers) {
         const matchingTitle = findTitleInContainer(nestedContainer, targetTitle);
 
