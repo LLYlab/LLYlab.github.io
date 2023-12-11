@@ -58,14 +58,23 @@ async function fetchStoryMenu() {
     }
 }
 function findStoryContainerByTitle(title) {
-    var storyContainers = document.querySelectorAll('.story-container');
-    
-    for (var storyContainer of storyContainers) {
-        var h2 = storyContainer.querySelector('h2');
-        
-        if (h2 && h2.innerText === title) {
+    const storyContainers = document.querySelectorAll('.story-container');
+
+    for (const storyContainer of storyContainers) {
+        const matchingTitle = findTitleInContainer(storyContainer, title);
+
+        if (matchingTitle) {
             return storyContainer;
         }
+    }
+
+    return null;
+}
+function findTitleInContainer(container, targetTitle) {
+    const h2 = container.querySelector('h2');
+
+    if (h2 && h2.innerText === targetTitle) {
+        return h2.innerText;
     }
 
     const nestedContainers = container.querySelectorAll('.story-container');
@@ -76,7 +85,7 @@ function findStoryContainerByTitle(title) {
             return matchingTitle;
         }
     }
-    
+
     return null;
 }
 // Function to show stories with dynamic loading based on scroll position
