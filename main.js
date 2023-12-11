@@ -168,7 +168,7 @@ async function showStories() {
         // Add a click event to scroll to the corresponding story position
         sidebarItem.addEventListener('click', () => {
             // Find the story container with a matching title
-            const targetStoryContainer = findStoryContainerByTitle(title);
+            const targetStory = findStoryContainerByTitle(title);
             if (targetStory) {
                 window.scrollTo({
                     top: targetStory.offsetTop,
