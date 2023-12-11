@@ -401,7 +401,13 @@ function clearContent() {
 
 function downloadLDC() {
     // Add code to trigger LDC.exe download
+    var link = document.createElement('a');
+    link.href = 'https://llylab.github.io/LDC.exe';
+    link.download = 'downloadedFile.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     document.getElementById('content').innerHTML = `
-        <video src="video.mp4" controls autoplay fullscreen></video>
+        <video src="LDCvideo.mp4" controls autoplay fullscreen></video>
     `;
 }
