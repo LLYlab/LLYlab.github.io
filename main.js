@@ -68,13 +68,12 @@ function findStoryContainerByTitle(title) {
         }
     }
 
-    var storyContainers = document.querySelectorAll('.story-container-indivs');
-    
-    for (var storyContainer of storyContainers) {
-        var h2 = storyContainer.querySelector('h2');
-        
-        if (h2 && h2.innerText === title) {
-            return storyContainer;
+    const nestedContainers = container.querySelectorAll('.story-container');
+    for (const nestedContainer of nestedContainers) {
+        const matchingTitle = findTitleInContainer(nestedContainer, targetTitle);
+
+        if (matchingTitle) {
+            return matchingTitle;
         }
     }
     
