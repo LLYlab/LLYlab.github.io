@@ -190,6 +190,28 @@
             display: none;
             max-width: 300px; /* 调整悬浮窗宽度 */
         }
+        /* 新添加的样式，可以根据需要进行调整 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            color: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .sidebar-item:hover {
+            color: green;
+        }
 
         /* 添加新的样式用于 try options */
         #try-options-container {
