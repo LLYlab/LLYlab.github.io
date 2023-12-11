@@ -73,6 +73,36 @@ async function showStories() {
     // Fetch story positions from the server
     const storyPositions = await fetchStoryPositions();
 
+    // Fetch story menu from the server
+    const storyMenu = await fetchStoryMenu();
+
+    // Create a sidebar with the fetched story menu
+    const sidebar = document.createElement('div');
+    sidebar.className = 'sidebar';
+
+    storyMenu.forEach((title, index) => {
+        const sidebarItem = document.createElement('div');
+        sidebarItem.className = 'sidebar-item';
+        sidebarItem.innerText = title;
+
+        // Add a click event to scroll to the corresponding story position
+        sidebarItem.addEventListener('click', () => {
+            const targetStory = document.getElementById(`story-${index + 1}`);
+            if (targetStory) {
+                window.scrollTo({
+                    top: targetStory.offsetTop,
+                    behavior: 'smooth',
+                });
+            }
+        });
+
+        sidebar.appendChild(sidebarItem);
+    });
+
+    // Append the sidebar to the content container
+    const contentContainer = document.getElementById('content');
+    contentContainer.appendChild(sidebar); // 注意这里是 contentContainer，而不是 body
+    
     var StoryNum=0;
     var NowStoryNum=-1;
 
@@ -86,36 +116,6 @@ async function showStories() {
             continue;
         }
         const content = await fetchStoryContent(fileName);
-
-        // Fetch story menu from the server
-        const storyMenu = await fetchStoryMenu();
-
-        // Create a sidebar with the fetched story menu
-        const sidebar = document.createElement('div');
-        sidebar.className = 'sidebar';
-
-        storyMenu.forEach((title, index) => {
-            const sidebarItem = document.createElement('div');
-            sidebarItem.className = 'sidebar-item';
-            sidebarItem.innerText = title;
-
-            // Add a click event to scroll to the corresponding story position
-            sidebarItem.addEventListener('click', () => {
-                const targetStory = document.getElementById(`story-${index + 1}`);
-                if (targetStory) {
-                    window.scrollTo({
-                        top: targetStory.offsetTop,
-                        behavior: 'smooth',
-                    });
-                }
-            });
-
-            sidebar.appendChild(sidebarItem);
-        });
-
-        // Append the sidebar to the content container
-        document.getElementById('content').appendChild(sidebar);
-
 
         if(NowStoryNum==-1){
             // Create story container
