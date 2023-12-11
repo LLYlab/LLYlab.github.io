@@ -42,6 +42,22 @@ async function fetchStoryContent(fileName) {
         return 'Failed to fetch story content';
     }
 }
+// Function to fetch story menu from the server
+async function fetchStoryMenu() {
+    try {
+        const response = await fetch('https://llylab.github.io/paths/storyMenu.txt');
+        const data = await response.text();
+
+        // Assuming each line in "storyMenu.txt" is a valid title
+        const storyMenu = data.split('\n').map((line) => line.trim());
+
+        return storyMenu;
+    } catch (error) {
+        console.error('Error fetching story menu:', error);
+        return [];
+    }
+}
+
 // Function to show stories with dynamic loading based on scroll position
 async function showStories() {
     clearContent();
@@ -70,6 +86,36 @@ async function showStories() {
             continue;
         }
         const content = await fetchStoryContent(fileName);
+
+        // Fetch story menu from the server
+        const storyMenu = await fetchStoryMenu();
+
+        // Create a sidebar with the fetched story menu
+        const sidebar = document.createElement('div');
+        sidebar.className = 'sidebar';
+
+        storyMenu.forEach((title, index) => {
+            const sidebarItem = document.createElement('div');
+            sidebarItem.className = 'sidebar-item';
+            sidebarItem.innerText = title;
+
+            // Add a click event to scroll to the corresponding story position
+            sidebarItem.addEventListener('click', () => {
+                const targetStory = document.getElementById(`story-${index + 1}`);
+                if (targetStory) {
+                    window.scrollTo({
+                        top: targetStory.offsetTop,
+                        behavior: 'smooth',
+                    });
+                }
+            });
+
+            sidebar.appendChild(sidebarItem);
+        });
+
+        // Append the sidebar to the content container
+        document.getElementById('content').appendChild(sidebar);
+
 
         if(NowStoryNum==-1){
             // Create story container
