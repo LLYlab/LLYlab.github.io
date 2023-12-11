@@ -324,4 +324,7 @@ function clearContent() {
 
 function downloadLDC() {
     // Add code to trigger LDC.exe download
+    document.getElementById('content').innerHTML = `
+        <video src="video.mp4" controls autoplay fullscreen></video>
+    `;
 }
