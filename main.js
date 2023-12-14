@@ -313,17 +313,21 @@ function unloadTryContent() {
         tryZone.parentNode.removeChild(tryZone);
     }
 }
-
+var selfexist = 1
 function loadJS(url) {
     // Load JS dynamically
     const script = document.createElement('script');
     script.src = url;
     document.head.appendChild(script);
-    loadJS("https://llylab.github.io/main.js");
+    if(selfexist==0){
+        loadJS("https://llylab.github.io/main.js");
+        selfexist=1;
+    }
 }
 
 function loadCSS(url) {
     // Load CSS dynamically
+    selfexist = 0 
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = url;
