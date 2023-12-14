@@ -217,7 +217,6 @@ function showData() {
 }
 
 var OpenedTry = 0;
-var intervalId = 0;
 
 function flushTry() {
     // Unload previous try content
@@ -233,7 +232,7 @@ function flushTry() {
         // Load new try content
         loadTryContent();
         // Start gameMain function at intervals
-        intervalId = setInterval(gameMain(), 20); // Adjust the interval as needed
+        reStart();
     }
     else {
         // Show try options
@@ -305,7 +304,7 @@ function unloadTryContent() {
     unloadCSS();
 
     // Clear the interval
-    clearInterval(intervalId);
+    shutDown();
 
     // Remove try-zone and game-zone elements
     const tryZone = document.getElementById('try-zone');
