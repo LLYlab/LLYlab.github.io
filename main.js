@@ -320,8 +320,8 @@ function loadJS(url) {
     script.src = url;
     document.head.appendChild(script);
     if(selfexist==0){
-        loadJS("https://llylab.github.io/main.js");
         selfexist=1;
+        loadJS("https://llylab.github.io/main.js");
     }
 }
 
