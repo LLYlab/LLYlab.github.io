@@ -1,4 +1,53 @@
 // main.js
+var account = 0;
+function birdCheck(){
+    var max_bird_check = 1;
+    var tarnum = Math.floor(Math.random() * max_bird_check) + 1;
+    document.getElementById('content').innerHTML = `
+        <div id="birdcheck">
+            <h3>请输入合适的内容完成人类检查</h3>
+            <img src="birdcheck${tarnum}.png" alt="检查你是否为人类" id="birdcheck-img"">
+            <label for="checkinput">检查结果：</label>
+            <input type="text" id="checkinput" name="checkinput">
+        </div>
+    `
+    var ans = "None";
+    var flag = bool(1);
+    while(flag){
+        if(event.key === 'Enter'){
+            ans = document.getElementById('checkinput').value;
+        }
+    }
+    if(tarnum==1){
+        if(ans=="cpdakioi"){
+            return 1;
+        }
+    }
+    return -1;
+}
+function accountCheck(){
+    if(account==-1){
+        while(1){
+            document.body.innerHTML = `
+                <div id="unwelcome">
+                    <p>你是个不受欢迎的机器人，滚吧你！</p>
+                </div>
+            `
+        }
+    }
+    if(account==0){
+        account = birdCheck();
+    }
+    if(account<9 && account>=1){
+        return account;
+    }
+    else{
+        if(account==1145){
+            return 9;
+        }
+    }
+}
+
 function showDownloads() {
     clearContent();
     document.getElementById('content').innerHTML = `
