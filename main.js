@@ -139,6 +139,7 @@ function findTitleInContainer(container, targetTitle) {
 }
 // Function to show stories with dynamic loading based on scroll position
 async function showStories() {
+    accountCheck();
     clearContent();
     
     document.getElementById('menu').innerHTML = `
@@ -254,6 +255,7 @@ async function showStories() {
 
 
 function showData() {
+    accountCheck();
     clearContent();
     // Add code to display data content
     document.getElementById('menu').innerHTML = `
@@ -290,6 +292,7 @@ function flushTry() {
 }
 // 新增 showTryOptions 函数
 function showTryOptions() {
+    accountCheck();
     clearContent();
 
     // Fetch try options from paths/try.txt
