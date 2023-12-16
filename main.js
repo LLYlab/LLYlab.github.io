@@ -1,5 +1,5 @@
 // main.js
-var account = 0;
+var account = 1;
 function birdCheck(){
     var max_bird_check = 1;
     var tarnum = Math.floor(Math.random() * max_bird_check) + 1;
