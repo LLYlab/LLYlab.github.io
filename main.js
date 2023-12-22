@@ -12,7 +12,7 @@ function birdCheck(){
         </div>
     `
     var ans = "None";
-    var flag = True;
+    var flag = true;
     while(flag){
         if(event.key === 'Enter'){
             ans = document.getElementById('checkinput').value;
