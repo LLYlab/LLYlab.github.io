@@ -1,7 +1,7 @@
 // main.js
 var account = 0;
 function birdCheck(){
-    var max_bird_check = 1;
+    var max_bird_check = 0;
     var tarnum = Math.floor(Math.random() * max_bird_check) + 1;
     document.getElementById('content').innerHTML = `
         <div id="birdcheck">
